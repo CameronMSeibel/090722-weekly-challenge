@@ -18,6 +18,9 @@
         found between -3 and 7 which is 10 
 */
 function findLargestGap(array) {
+    if(array.length == 0) {
+        return 0; // Case of empty array
+    }
     let max = Number.MIN_VALUE;
     let min = Number.MAX_VALUE;
     array.forEach((value) => {
