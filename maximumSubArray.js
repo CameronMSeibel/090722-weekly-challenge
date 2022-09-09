@@ -14,9 +14,26 @@
     Output: 4 
 */
 function maxSubArray(array) {
-    return conquer(array);
+    return iterativeMax(array);
 }
 
+/**
+ * 
+ * @param {Array} array 
+ */
+function iterativeMax(array) {
+    let max = Number.MIN_VALUE;
+    for(let i = 0; i < array.length; i++) {
+        for(let j = i + 1; j <= array.length; j++) {
+            let subArray = array.slice(i, j);
+            let sum = subArray.reduce((total, value) => total + value);
+            if(sum > max) max = sum;
+        }
+    }
+    return max;
+}
+
+// Unused
 function divide(array) {
     if(array.length == 0) {
         return Number.MIN_VALUE;
@@ -28,6 +45,7 @@ function divide(array) {
     }
 }
 
+// Unused
 function conquer(array) {
     return Math.max(array.reduce((total, value) => total + value), divide(array));
 }
